@@ -100,43 +100,44 @@ namespace FileRepairer
             int skipbytes = (int)numericUpDown1.Value;
             Task.Run(() =>
             {
-            for (int i = 0; i < s.Length; i++)
-            {
-                string[] t = s[i].Split(new string[] { "\t" }, StringSplitOptions.RemoveEmptyEntries);
-                long len = long.Parse(t[0]);
-                string name = t[1];
-                string fname = Path.Combine(path, name);
-                if (File.Exists(fname))
+                for (int i = 0; i < s.Length; i++)
                 {
-                    FileInfo finfo = new FileInfo(fname);
-                    if (len > finfo.Length && finfo.Length > skipbytes)
+                    string[] t = s[i].Split(new string[] { "\t" }, StringSplitOptions.RemoveEmptyEntries);
+                    if (t.Length < 2) continue;
+                    long len = long.Parse(t[0]);
+                    string name = t[1];
+                    string fname = Path.Combine(path, name);
+                    if (File.Exists(fname))
                     {
-                        int bytecount = (int)(len - finfo.Length);
-                        File.Copy(fname, "temp.tmp");
-                        FileStream fs0 = new FileStream("temp.tmp", FileMode.Open);
-                        FileStream fs = new FileStream(fname, FileMode.Open);
-                        fs0.Seek(skipbytes, SeekOrigin.Begin);
-                        fs.Seek(skipbytes, SeekOrigin.Begin);
-                        byte[] buffer = new byte[bufferlen];
-                        for (long j = bytecount; j > 0;)
+                        FileInfo finfo = new FileInfo(fname);
+                        if (len > finfo.Length && finfo.Length > skipbytes)
                         {
-                            fs.Write(buffer, 0, (int)Math.Min(buffer.Length, j));
-                            j -= buffer.Length;
+                            int bytecount = (int)(len - finfo.Length);
+                            File.Copy(fname, "temp.tmp");
+                            FileStream fs0 = new FileStream("temp.tmp", FileMode.Open);
+                            FileStream fs = new FileStream(fname, FileMode.Open);
+                            fs0.Seek(skipbytes, SeekOrigin.Begin);
+                            fs.Seek(skipbytes, SeekOrigin.Begin);
+                            byte[] buffer = new byte[bufferlen];
+                            for (long j = bytecount; j > 0;)
+                            {
+                                fs.Write(buffer, 0, (int)Math.Min(buffer.Length, j));
+                                j -= buffer.Length;
+                            }
+                            for (long j = fs0.Length - skipbytes; j > 0;)
+                            {
+                                int rlen = fs0.Read(buffer, 0, buffer.Length);
+                                fs.Write(buffer, 0, (int)Math.Min(rlen, j));
+                                j -= rlen;
+                            }
+                            fs.Close();
+                            fs0.Close();
+                            File.Delete("temp.tmp");
                         }
-                        for (long j = fs0.Length - skipbytes; j > 0;)
-                        {
-                            int rlen = fs0.Read(buffer, 0, buffer.Length);
-                            fs.Write(buffer, 0, (int)Math.Min(rlen, j));
-                            j -= rlen;
-                        }
-                        fs.Close();
-                        fs0.Close();
-                        File.Delete("temp.tmp");
                     }
-                }
-                this.Invoke((Action)(()=>{
-                    Text = $"[{i.ToString()}/{s.Length}]{fname}";
-                }));
+                    this.Invoke((Action)(()=>{
+                        Text = $"[{i.ToString()}/{s.Length}]{fname}";
+                    }));
                 }
                 MessageBox.Show("Fin");
             });
@@ -148,6 +149,9 @@ namespace FileRepairer
             int len0 = textBox4.Text.Length;
             textBox4.Text = textBox4.Text.Replace(",\r\n    \"path\" : [\r\n     \"", "\t").Replace("\"\r\n    ]\r\n   },\r\n   {\r\n    \"length\" : ","\r\n");
             textBox4.Text = textBox4.Text.Replace("   {\r\n    \"length\" : ", "").Replace("\"\r\n    ]\r\n   }","");
+            int h1 = textBox4.Text.IndexOf("\"files\" : [") + "\"files\" : [".Length;
+            if (h1>0) textBox4.Text = textBox4.Text.Substring(h1);
+            if (textBox4.Text.Contains("]")) textBox4.Text = textBox4.Text.Substring(0, textBox4.Text.IndexOf("]"));
             if (len0 == textBox4.Text.Length) textBox4.Text = textBox4.Text.Replace(".zip", ".zip.!qB");
         }
     }

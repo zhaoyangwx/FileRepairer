@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="openFileDialog2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>165, 17</value>
+  </metadata>
+  <data name="textBox4.Text" xml:space="preserve">
+    <value>404303485	libgen.scimag15200000-15200999.zip.!qB
+660547419	libgen.scimag15201000-15201999.zip.!qB
+608753966	libgen.scimag15202000-15202999.zip.!qB
+675768704	libgen.scimag15203000-15203999.zip.!qB
+523283804	libgen.scimag15204000-15204999.zip.!qB
+439186721	libgen.scimag15205000-15205999.zip.!qB
+959666091	libgen.scimag15206000-15206999.zip.!qB
+1005043395	libgen.scimag15207000-15207999.zip.!qB
+1298765152	libgen.scimag15208000-15208999.zip.!qB
+1138758633	libgen.scimag15209000-15209999.zip.!qB
+1071159651	libgen.scimag15210000-15210999.zip.!qB
+810733397	libgen.scimag15211000-15211999.zip.!qB
+811133438	libgen.scimag15212000-15212999.zip.!qB
+856102699	libgen.scimag15213000-15213999.zip.!qB
+829832351	libgen.scimag15214000-15214999.zip.!qB
+891537337	libgen.scimag15215000-15215999.zip.!qB
+821671740	libgen.scimag15216000-15216999.zip.!qB
+826072289	libgen.scimag15217000-15217999.zip.!qB
+831895244	libgen.scimag15218000-15218999.zip.!qB
+782657103	libgen.scimag15219000-15219999.zip.!qB
+800105203	libgen.scimag15220000-15220999.zip.!qB
+852711636	libgen.scimag15221000-15221999.zip.!qB
+808696816	libgen.scimag15222000-15222999.zip.!qB
+830895317	libgen.scimag15223000-15223999.zip.!qB
+876651366	libgen.scimag15224000-15224999.zip.!qB
+846605010	libgen.scimag15225000-15225999.zip.!qB
+830038276	libgen.scimag15226000-15226999.zip.!qB
+891908481	libgen.scimag15227000-15227999.zip.!qB
+861290233	libgen.scimag15228000-15228999.zip.!qB
+849204214	libgen.scimag15229000-15229999.zip.!qB
+862583925	libgen.scimag15230000-15230999.zip.!qB
+971092257	libgen.scimag15231000-15231999.zip.!qB
+984089892	libgen.scimag15232000-15232999.zip.!qB
+1009673189	libgen.scimag15233000-15233999.zip.!qB
+844840922	libgen.scimag15234000-15234999.zip.!qB
+493640993	libgen.scimag15235000-15235999.zip.!qB
+632523728	libgen.scimag15236000-15236999.zip.!qB
+614400674	libgen.scimag15237000-15237999.zip.!qB
+469075273	libgen.scimag15238000-15238999.zip.!qB
+622856098	libgen.scimag15239000-15239999.zip.!qB
+807622991	libgen.scimag15240000-15240999.zip.!qB
+658331672	libgen.scimag15241000-15241999.zip.!qB
+626402600	libgen.scimag15242000-15242999.zip.!qB
+595139344	libgen.scimag15243000-15243999.zip.!qB
+749077834	libgen.scimag15244000-15244999.zip.!qB
+1008608026	libgen.scimag15245000-15245999.zip.!qB
+1437620821	libgen.scimag15246000-15246999.zip.!qB
+3908776519	libgen.scimag15247000-15247999.zip.!qB
+1165903992	libgen.scimag15248000-15248999.zip.!qB
+914989719	libgen.scimag15249000-15249999.zip.!qB
+886037233	libgen.scimag15250000-15250999.zip.!qB
+609824589	libgen.scimag15251000-15251999.zip.!qB
+474171825	libgen.scimag15252000-15252999.zip.!qB
+568146175	libgen.scimag15253000-15253999.zip.!qB
+577616057	libgen.scimag15254000-15254999.zip.!qB
+643904594	libgen.scimag15255000-15255999.zip.!qB
+747192868	libgen.scimag15256000-15256999.zip.!qB
+718961232	libgen.scimag15257000-15257999.zip.!qB
+339131356	libgen.scimag15258000-15258999.zip.!qB
+450502100	libgen.scimag15259000-15259999.zip.!qB
+578725311	libgen.scimag15260000-15260999.zip.!qB
+2933299440	libgen.scimag15261000-15261999.zip.!qB
+370429635	libgen.scimag15262000-15262999.zip.!qB
+684556205	libgen.scimag15263000-15263999.zip.!qB
+970805313	libgen.scimag15264000-15264999.zip.!qB
+347872695	libgen.scimag15265000-15265999.zip.!qB
+490420750	libgen.scimag15266000-15266999.zip.!qB
+561656529	libgen.scimag15267000-15267999.zip.!qB
+880734432	libgen.scimag15268000-15268999.zip.!qB
+1004904131	libgen.scimag15269000-15269999.zip.!qB
+868065151	libgen.scimag15270000-15270999.zip.!qB
+706189679	libgen.scimag15271000-15271999.zip.!qB
+632762468	libgen.scimag15272000-15272999.zip.!qB
+726162602	libgen.scimag15273000-15273999.zip.!qB
+757616804	libgen.scimag15274000-15274999.zip.!qB
+739174353	libgen.scimag15275000-15275999.zip.!qB
+635883767	libgen.scimag15276000-15276999.zip.!qB
+713308849	libgen.scimag15277000-15277999.zip.!qB
+817834053	libgen.scimag15278000-15278999.zip.!qB
+797395558	libgen.scimag15279000-15279999.zip.!qB
+728057621	libgen.scimag15280000-15280999.zip.!qB
+686003881	libgen.scimag15281000-15281999.zip.!qB
+699328241	libgen.scimag15282000-15282999.zip.!qB
+863474735	libgen.scimag15283000-15283999.zip.!qB
+860428117	libgen.scimag15284000-15284999.zip.!qB
+953957824	libgen.scimag15285000-15285999.zip.!qB
+1094135896	libgen.scimag15286000-15286999.zip.!qB
+1107584677	libgen.scimag15287000-15287999.zip.!qB
+894053079	libgen.scimag15288000-15288999.zip.!qB
+502715692	libgen.scimag15289000-15289999.zip.!qB
+489250500	libgen.scimag15290000-15290999.zip.!qB
+532915168	libgen.scimag15291000-15291999.zip.!qB
+657749367	libgen.scimag15292000-15292999.zip.!qB
+885323202	libgen.scimag15293000-15293999.zip.!qB
+902065701	libgen.scimag15294000-15294999.zip.!qB
+956168463	libgen.scimag15295000-15295999.zip.!qB
+675888850	libgen.scimag15296000-15296999.zip.!qB
+403092252	libgen.scimag15297000-15297999.zip.!qB
+310499595	libgen.scimag15298000-15298999.zip.!qB
+392487815	libgen.scimag15299000-15299999.zip.!qB</value>
+  </data>
+  <metadata name="folderBrowserDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>313, 17</value>
+  </metadata>
+</root>

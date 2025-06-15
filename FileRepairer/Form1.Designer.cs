@@ -182,6 +182,7 @@
             // 
             // numericUpDown1
             // 
+            this.numericUpDown1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.numericUpDown1.Location = new System.Drawing.Point(75, 342);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             2147483647,

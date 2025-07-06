@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BencodeNET.Torrents;
+using BencodeNET.Parsing;
 
 namespace FileRepairer
 {
@@ -95,6 +97,8 @@ namespace FileRepairer
 
         private void button4_Click(object sender, EventArgs e)
         {
+            string tempFile = $"temp_{DateTime.Now.ToString("yyyyMMdd_HHmmss.fffffff")}.tmp";
+            if (File.Exists(tempFile)) File.Delete(tempFile);
             string path = textBox3.Text;
             string[] s = textBox4.Text.Split(new string[] {"\r", "\n"}, StringSplitOptions.RemoveEmptyEntries);
             int skipbytes = (int)numericUpDown1.Value;
@@ -113,8 +117,8 @@ namespace FileRepairer
                         if (len > finfo.Length && finfo.Length > skipbytes)
                         {
                             int bytecount = (int)(len - finfo.Length);
-                            File.Copy(fname, "temp.tmp");
-                            FileStream fs0 = new FileStream("temp.tmp", FileMode.Open);
+                            File.Copy(fname, tempFile);
+                            FileStream fs0 = new FileStream(tempFile, FileMode.Open);
                             FileStream fs = new FileStream(fname, FileMode.Open);
                             fs0.Seek(skipbytes, SeekOrigin.Begin);
                             fs.Seek(skipbytes, SeekOrigin.Begin);
@@ -132,7 +136,7 @@ namespace FileRepairer
                             }
                             fs.Close();
                             fs0.Close();
-                            File.Delete("temp.tmp");
+                            File.Delete(tempFile);
                         }
                     }
                     this.Invoke((Action)(()=>{
@@ -150,9 +154,67 @@ namespace FileRepairer
             textBox4.Text = textBox4.Text.Replace(",\r\n    \"path\" : [\r\n     \"", "\t").Replace("\"\r\n    ]\r\n   },\r\n   {\r\n    \"length\" : ","\r\n");
             textBox4.Text = textBox4.Text.Replace("   {\r\n    \"length\" : ", "").Replace("\"\r\n    ]\r\n   }","");
             int h1 = textBox4.Text.IndexOf("\"files\" : [") + "\"files\" : [".Length;
-            if (h1>0) textBox4.Text = textBox4.Text.Substring(h1);
+            if (h1>10) textBox4.Text = textBox4.Text.Substring(h1);
             if (textBox4.Text.Contains("]")) textBox4.Text = textBox4.Text.Substring(0, textBox4.Text.IndexOf("]"));
-            if (len0 == textBox4.Text.Length) textBox4.Text = textBox4.Text.Replace(".zip", ".zip.!qB");
+            if (len0 == textBox4.Text.Length)
+            {
+                textBox4.Text = textBox4.Text.Replace(".zip", ".zip.!qB");
+                textBox4.Text = textBox4.Text.Replace(".cbz", ".cbz.!qB");
+                textBox4.Text = textBox4.Text.Replace(".cbr", ".cbr.!qB");
+                textBox4.Text = textBox4.Text.Replace(".pdf", ".pdf.!qB");
+                textBox4.Text = textBox4.Text.Replace(".epub", ".epub.!qB");
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Link;
+            else e.Effect = DragDropEffects.None; 
+        }
+        public string dirMask = "";
+        public int startpos, len;
+        private void LoadTorrent(string pathTorr)
+        {
+            if (textBox3.Text.Contains("#"))
+            {
+                if (textBox3.Text.Length == 1)
+                {
+                    dirMask = "";
+                }
+                else {
+                    string[] masks = textBox3.Text.Split(new string[] { "|" }, StringSplitOptions.RemoveEmptyEntries);
+                    if (masks.Length >= 3)
+                    {
+                        dirMask = masks[0];
+                        startpos = int.Parse(masks[1]);
+                        len = int.Parse(masks[2]);
+                    }
+                }
+            }
+            if (dirMask.Length > 0)
+            {
+                FileInfo finfo = new FileInfo(pathTorr);
+                textBox3.Text = dirMask.Replace("#", finfo.Name.Substring(startpos,len));
+            }
+            Torrent infoTorr = new BencodeParser(System.Text.Encoding.Default).Parse<Torrent>(pathTorr);
+            StringBuilder sb = new StringBuilder();
+            foreach(MultiFileInfo f in infoTorr.Files)
+            {
+                sb.AppendLine($"{f.FileSize.ToString()}\t{f.FileName}");
+            }
+            textBox4.Text = sb.ToString();
+        }
+
+        private void Form1_DragDrop(object sender, DragEventArgs e)
+        {
+            string Path = ((Array)e.Data.GetData(DataFormats.FileDrop)).GetValue(0).ToString();
+            LoadTorrent(Path);
         }
     }
 }
